@@ -14,10 +14,10 @@
             }
 
             body{
-                background-color: blue;
+                background-color: white;
             }
             .topnav{
-                background-color: gray;
+                background-color: #D7D7D7;
                 overflow: hidden;
             }
 
@@ -35,7 +35,7 @@
             }
             
             footer{
-                background-color: gray;
+                background-color: #D7D7D7;
                 width: 100%;
                 position: absolute;
                 bottom: 0;
@@ -47,10 +47,11 @@
     <body>
         <nav class="topnav">
             <div class="login-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Username" name="username">
-                    <input type="text" placeholder="Password" name="psw">
-                    <button type="submit">Login</button>
+                <form action="{{ URL::to('/loginme') }}" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    Username: <input type="text" placeholder="Username" name="username">
+                    Password: <input type="text" placeholder="Password" name="password">
+                    <button type="submit" name="loginButton">Login</button>
                 </form>
             </div>
         </nav>
@@ -62,7 +63,7 @@
             <div class="footerbottom">
                 <p>Universidad Nacional de Costa Rica</p>
                 <p>Proyecto 4</p>
-                <p>Modelo datos Car Authority Registration</p>
+                <p>Modelo datos <a href="http://www.databaseanswers.org/data_models/vehicle_registration_authority/index.htm" target="_blank">Car Authority Registration</a></p>
             </div>
     </footer>
 </html>

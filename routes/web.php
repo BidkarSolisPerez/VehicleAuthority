@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::get('/ServiceRequestView', function() {
     return view("Pages.serviceRequestView");
 });
+
+Route::post('/loginme', "UserController@loginme");
