@@ -11,10 +11,15 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/login', function () {
+*/
+Route::get('/', function () {
     return view("Pages.login");
+});
+
+Route::get('/ServiceRequestView', function() {
+    return view("Pages.serviceRequestView");
 });
