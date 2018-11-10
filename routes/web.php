@@ -25,3 +25,28 @@ Route::get('/ServiceRequestView', function() {
 });
 
 Route::post('/loginme', "UserController@loginme");
+
+Route::get('/AddCustomer', function() {
+    return view("Pages.addcustomer");
+});
+
+Route::get('/CustomerView', function() {
+    return view("Pages.customerView");
+});
+
+Route::get('/AddNewDepartment', function() {
+    return view("Pages.addNewDepartment");
+});
+
+Route::get('/Department', function() {
+    return view("Pages.departmentView");
+});
+
+Route::get('/AddNewService', function() {
+    return view("Pages.addNewService");
+});
+
+Route::get('/Service', function() {
+    return view("Pages.serviceView");
+});
+

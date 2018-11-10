@@ -51,7 +51,7 @@
                     Password: <input type="text" placeholder="Password" name="password">
                     <button type="submit" name="loginButton">Login</button>
                 </form>
-            </div>
+            </div> 
         </nav>
         
         <h1 class="mainheader">Vehicle System MyCarAutho</h1> 
