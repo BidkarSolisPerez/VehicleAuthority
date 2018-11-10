@@ -27,7 +27,7 @@ class UserController extends BaseController
             
             echo "User found";
             session(['currentUser'=>$username]);
-            return redirect('ServiceRequestView');
+            return redirect('ServiceRequest');
             echo "Nombre del usuario es " . Session::get('currentUser') . "</br>";
             session()->forget('currentUser');
             if(session()->has('currentUser')){

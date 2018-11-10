@@ -19,3 +19,12 @@ Route::get('/', function () {
 
 Route::get('/', "PagesController@login");
 
+Route::get('/ServiceRequest', "PagesController@viewServiceRequest");
+
+Route::get('/Customer', "PagesController@viewCustomer");
+
+Route::get('/Service', "PagesController@viewService");
+
+Route::get('/Department', "PagesController@viewDepartment");
+
+

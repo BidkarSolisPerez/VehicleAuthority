@@ -13,4 +13,16 @@ class PagesController extends Controller {
     public function viewServiceRequest(){
         return view("Pages.viewServiceRequest");
     }
+
+    public function viewCustomer(){
+        return view("Pages.viewCustomer");
+    }
+
+    public function viewService(){
+        return view("Pages.viewService");
+    }
+
+    public function viewDepartment(){
+        return view("Pages.viewDepartment");
+    }
 }
