@@ -32,6 +32,10 @@
                 width: 95%;
                 margin: auto;
             }
+
+            .tableView{
+                width: 90%;
+            }
             
             footer{
                 background-color: #D7D7D7;
@@ -55,6 +59,19 @@
         </nav>
         
         <h1 class="mainheader">Vehicle System MyCarAutho</h1> 
+
+        <button>Nueva Solicitud</button>
+
+        <table class="tableView">
+            <tr>
+                <th>ID Solicitud</th>
+                <th>ID Cliente</th>
+                <th>ID Vechiculo</th>
+                <th>ID Servicio</th>
+                <th>Fecha Servicio</th>
+                <th>Costo</th>
+            </tr>
+        </table>
 
     </body>
     <footer>
