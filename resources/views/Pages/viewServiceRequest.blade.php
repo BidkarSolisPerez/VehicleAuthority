@@ -68,26 +68,26 @@
     <button>Agregar nuevo</button>
     <table class="tableView">
         <tr>
-            <th>ID Solicitud</th>
-            <th>ID Cliente</th>
-            <th>ID Vechiculo</th>
-            <th>ID Servicio</th>
-            <th>Fecha Servicio</th>
-            <th>Costo</th>
-            <th>Actualizacion</th>
-            @if (count($requests) > 0)
-                @foreach ($requests as $request)
-                    <tr>
-                        <td>{{ $request->id_servicio_consulta }}</td>
-                        <td>{{ $request->id_cliente }}</td>
-                        <td>{{ $request->id_vehiculo }}</td>
-                        <td>{{ $request->id_servicio }}</td>
-                        <td>{{ $request->fecha_servicio_efectuado}}</td>
-                        <td>{{ $request->costo_servicio }}</td>
-                        <td><a>Edit</a>|<a>Delete</a></td>
-                    </tr>
-                @endforeach
-            @endif
-        </tr>
+                <th>ID Solicitud</th>
+                <th>ID Cliente</th>
+                <th>ID Vechiculo</th>
+                <th>ID Servicio</th>
+                <th>Fecha Servicio</th>
+                <th>Costo</th>
+                <th>Actualizacion</th>
+                @if (count($requests) > 0)
+                    @foreach ($requests as $request)
+                        <tr>
+                            <td>{{ $request->id_servicio_consulta }}</td>
+                            <td>{{ $request->id_cliente }}</td>
+                            <td>{{ $request->id_vehiculo }}</td>
+                            <td>{{ $request->id_servicio }}</td>
+                            <td>{{ $request->fecha_servicio_efectuado}}</td>
+                            <td>{{ $request->costo_servicio }}</td>
+                            <td><a>Edit</a>|<a>Delete</a></td>
+                        </tr>
+                    @endforeach
+                @endif
+            </tr>
     </table>
 @endsection

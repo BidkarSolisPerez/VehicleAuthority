@@ -17,14 +17,22 @@ class PagesController extends Controller {
     }
 
     public function viewCustomer(){
-        return view("Pages.viewCustomer");
+        $customers = DB::table('cliente')
+            ->join('direccion_cliente','cliente.id_direccion', '=', 'direccion_cliente.id_direccion')
+            ->select('cliente.id_cliente','cliente.telefono','cliente.correo_electronico','direccion_cliente.provincia','direccion_cliente.canton','direccion_cliente.distrito','direccion_cliente.direccion_exacta')
+            ->get();
+        return view("Pages.viewCustomer")->with('customers',$customers);
+        //echo $customers;
     }
 
     public function viewService(){
-        return view("Pages.viewService");
+        $services = DB::table('servicio')->get();
+        return view("Pages.viewService")->with('services',$services);
+        //echo $services;
     }
 
     public function viewDepartment(){
-        return view("Pages.viewDepartment");
+        $departamentos = DB::table('departamento')->get();
+        return view("Pages.viewDepartment")->with('departamentos',$departamentos);
     }
 }
