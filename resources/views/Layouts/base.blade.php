@@ -7,6 +7,8 @@
 
         <title>Laravel</title>
 
+        @yield('style')
+
     </head>
     <body>
         @yield('content')

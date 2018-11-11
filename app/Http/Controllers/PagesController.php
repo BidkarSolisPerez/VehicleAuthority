@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Iluminate\Http\Request;
+use DB;
 
 class PagesController extends Controller {
 
@@ -11,7 +12,8 @@ class PagesController extends Controller {
     }
 
     public function viewServiceRequest(){
-        return view("Pages.viewServiceRequest");
+        $serviceReq = DB::table('consulta_servicio')->get();
+        return view("Pages.viewServiceRequest")->with('requests',$serviceReq);
     }
 
     public function viewCustomer(){
