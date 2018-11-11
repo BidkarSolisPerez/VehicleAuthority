@@ -1,0 +1,33 @@
+Insert clientes
+INSERT INTO `cliente`(`id_cliente`, `telefono`, `correo_electronico`, `id_direccion`, `otro_detalle`) VALUES (102340986,88767243,"cliente1@dominio.com",102340986,"Es un cliente premium");
+INSERT INTO `cliente`(`id_cliente`, `telefono`, `correo_electronico`, `id_direccion`, `otro_detalle`) VALUES (102340234,88768690,"cliente2@dominio.com",102340234,"Es un cliente premium");
+INSERT INTO `cliente`(`id_cliente`, `telefono`, `correo_electronico`, `id_direccion`, `otro_detalle`) VALUES (103450986,88767243,"cliente3@dominio.com",103450986,NULL)
+Insert direccion de clientes
+INSERT INTO `direccion_cliente`(`id_direccion`, `provincia`, `canton`, `distrito`, `direccion_exacta`) VALUES (102340986,"San Jose","San Jose","Uruca","Del banco 100 metros este");
+INSERT INTO `direccion_cliente`(`id_direccion`, `provincia`, `canton`, `distrito`, `direccion_exacta`) VALUES (102340234,"Cartago","Oreamuno","Los Angeles","De la iglesia 100 metros este");
+INSERT INTO `direccion_cliente`(`id_direccion`, `provincia`, `canton`, `distrito`, `direccion_exacta`) VALUES (103450986,"Heredia","Heredia","Santa Lucia","De la libreria 100 metros este")
+Insert department
+INSERT INTO `departamento`(`id_departamento`, `nombre_departamento`, `descripcion_departamento`, `otros_detalles`) VALUES (100,"Pintura","Departamento pintura",NULL)
+Insert Servicio
+INSERT INTO `servicio`(`id_servicio`, `next_id_service`, `id_departamento`, `nombre_servicio`, `costo_servicio`, `descripcion_servicio`, `otros_detalles`) VALUES (1000,1001,100,"Pintado de puertas",75000,"Servicio de pintura de puertas del vehiculo",NULL)
+Insert Fabricante
+INSERT INTO `fabricante_vehiculo`(`codigo_fabricante`, `nombre_fabricante`, `otro_detalle`) VALUES (1,"Suzuki","Fabricante de Japon");
+INSERT INTO `fabricante_vehiculo`(`codigo_fabricante`, `nombre_fabricante`, `otro_detalle`) VALUES (2,"Honda","Fabricante de Japon");
+INSERT INTO `fabricante_vehiculo`(`codigo_fabricante`, `nombre_fabricante`, `otro_detalle`) VALUES (3,"Ford","Fabricante de Estados Unidos")
+Insert modelo vehiculo
+INSERT INTO `modelo_vehiculo`(`codigo_modelo`, `nombre_modelo`, `codigo_fabricante`) VALUES (1,"Vitara",1);
+INSERT INTO `modelo_vehiculo`(`codigo_modelo`, `nombre_modelo`, `codigo_fabricante`) VALUES (2,"CRX",2);
+INSERT INTO `modelo_vehiculo`(`codigo_modelo`, `nombre_modelo`, `codigo_fabricante`) VALUES (3,"Explorer",3)
+Insert categoria de vehiculo
+INSERT INTO `categoria_vehiculo`(`codigo_categoria_vehiculo`, `descripcion_categoria`) VALUES (1,"SUV");
+INSERT INTO `categoria_vehiculo`(`codigo_categoria_vehiculo`, `descripcion_categoria`) VALUES (2,"Familiar");
+INSERT INTO `categoria_vehiculo`(`codigo_categoria_vehiculo`, `descripcion_categoria`) VALUES (3,"Vechiculo")
+Insert Vehiculo
+INSERT INTO `vehiculo`(`id_vehiculo`, `codigo_categoria`, `codigo_fabricante`, `codigo_modelo`, `año_registro`, `otro_detalle`) VALUES (23412,1,1,1,2016,"Vehiculo en buen estado");
+INSERT INTO `vehiculo`(`id_vehiculo`, `codigo_categoria`, `codigo_fabricante`, `codigo_modelo`, `año_registro`, `otro_detalle`) VALUES (12344,2,2,2,2017,"Vehiculo en mal estado");
+INSERT INTO `vehiculo`(`id_vehiculo`, `codigo_categoria`, `codigo_fabricante`, `codigo_modelo`, `año_registro`, `otro_detalle`) VALUES (23423,3,3,3,2015,"Vehiculo en excelente estado")
+Insert service request
+INSERT INTO `consulta_servicio`(`id_servicio_consulta`, `is_servicio_consulta_previo`, `id_cliente`, `id_vehiculo`, `id_servicio`, `fecha_servicio_solicitada`, `fecha_servicio_efectuado`, `costo_servicio`, `id_prueba_adicional`, `otro_detalle`) VALUES (1000,999,102340986,23412,1000,"2017-06-15","2017-06-16",750000,NULL,"Vehiculo sin poblemas");
+INSERT INTO `consulta_servicio`(`id_servicio_consulta`, `is_servicio_consulta_previo`, `id_cliente`, `id_vehiculo`, `id_servicio`, `fecha_servicio_solicitada`, `fecha_servicio_efectuado`, `costo_servicio`, `id_prueba_adicional`, `otro_detalle`) VALUES (1002,1001,102340234,12344,1000,"2017-06-15","2017-06-16",750000,NULL,"Vehiculo sin poblemas");
+INSERT INTO `consulta_servicio`(`id_servicio_consulta`, `is_servicio_consulta_previo`, `id_cliente`, `id_vehiculo`, `id_servicio`, `fecha_servicio_solicitada`, `fecha_servicio_efectuado`, `costo_servicio`, `id_prueba_adicional`, `otro_detalle`) VALUES (1004,1003,103450986,23412,1000,"2017-06-15","2017-06-16",750000,NULL,"Vehiculo sin poblemas")
+
