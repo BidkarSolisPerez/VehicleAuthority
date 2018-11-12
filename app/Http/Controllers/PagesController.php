@@ -35,4 +35,8 @@ class PagesController extends Controller {
         $departamentos = DB::table('departamento')->get();
         return view("Pages.viewDepartment")->with('departamentos',$departamentos);
     }
+
+    public function addNewDepartment(){
+        return view("Pages.addNewDepartment");
+    }
 }

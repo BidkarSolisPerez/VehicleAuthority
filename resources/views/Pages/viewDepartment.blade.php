@@ -65,7 +65,7 @@
 
 <h1 class="mainheader">Vehicle System MyCarAutho</h1>
 
-<button>Agregar nuevo</button>
+<button type="button" onclick="window.location='{{ url('/NewDepartment') }}'">Nuevo Departamento</button>
 
 <table class="tableView">
         <tr>
@@ -80,12 +80,12 @@
                         <td>{{ $departamento->id_departamento }}</td>
                         <td>{{ $departamento->nombre_departamento }}</td>
                         <td>{{ $departamento->descripcion_departamento }}</td>
-                        @if ($departamento->otros_detalles = NULL)
+                        @if ($departamento->otros_detalles == NULL)
                             <td></td>        
                         }@else
                             <td>{{ $departamento->otros_detalles }}</td>
                         @endif
-                        <td><a>Edit</a>|<a>Delete</a></td>
+                    <td><a>Edit</a>|<a href="/delete/{{$departamento->id_departamento}}">Delete</a></td>
                     </tr>
                 @endforeach
             @endif

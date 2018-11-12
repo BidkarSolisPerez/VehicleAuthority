@@ -15,7 +15,7 @@ class UserController extends BaseController
 {
     
     public function loginme(Request $req){
-
+        
         $username = $req->input('username');
         $password = $req->input('password');
 
@@ -35,7 +35,14 @@ class UserController extends BaseController
             }else{
                 echo "User was removed from session</br>";
             }
-            
+        }else{
+            echo "User did not found";
+        }
+
+    }
+}
+
+
 
             //In order to check if session has a value with key
             /*
@@ -45,10 +52,3 @@ class UserController extends BaseController
 
                 }
             */
-
-        }else{
-            echo "User did not found";
-        }
-
-    }
-}
