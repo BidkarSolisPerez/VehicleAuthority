@@ -40,6 +40,11 @@ class UserController extends BaseController
         }
 
     }
+
+    public function logoutme(){
+        echo "estamos en log out";
+        //return redirect('login')->with(Auth::logout());
+    }
 }
 
 

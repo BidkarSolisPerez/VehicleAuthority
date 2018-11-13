@@ -30,20 +30,28 @@ class SaveController extends BaseController
         DB::table('departamento')->insert($values);
         
         return redirect('Department');
-       /*
-        echo "Detalles del departamento" . $id_department;
-        echo "Detalles del departamento" . $department_name;
-        echo "Detalles del departamento" . $department_descrip;
-        echo "Detalles del departamento" . $other_details;*/
-
     }
 
     public function deleteDepartment($id){
-
-        //echo $id;
-
         DB::table('departamento')->where('id_departamento', $id)->delete();
-
         return redirect('Department');  
     }
+
+    public function editDepartment(Request $request,$id) {
+
+        $department_name = $request->input('nombre_departamento');
+        $department_descipcion = $request->input('descripcion_departamento');
+        $department_otros_detalles = $request->input('detalles_departamento');
+        DB::update('update departamento set nombre_departamento = ? where id_departamento = ?',[$department_name,$id]);
+        DB::update('update departamento set descripcion_departamento = ? where id_departamento = ?',[$department_descipcion,$id]);
+        DB::update('update departamento set otros_detalles = ? where id_departamento = ?',[$department_otros_detalles,$id]);
+        return redirect('Department');
+     }
+
+     public function showDepartment($id){
+        $departamento = DB::table('departamento')->where('id_departamento',$id)->get();
+        return view('Pages.editDepartment',['departamento'=>$departamento]);
+     }
+
+     
 }

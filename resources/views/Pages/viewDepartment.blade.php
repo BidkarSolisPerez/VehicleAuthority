@@ -53,11 +53,9 @@
 @section('content')
 <nav class="topnav">
         <div class="login-container">
-            <form action="{{ URL::to('/loginme') }}" method="post">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                Username: <input type="text" placeholder="Username" name="username">
-                Password: <input type="text" placeholder="Password" name="password">
-                <button type="submit" name="loginButton">Login</button>
+            <p>{{ session('user')}}</p>
+            <form action="{{ URL::to('/logoutme') }}" method="post">
+                <button type="submit" name="loginButton">Login Out</button>
             </form>
         </div>
 </nav>
@@ -85,7 +83,7 @@
                         }@else
                             <td>{{ $departamento->otros_detalles }}</td>
                         @endif
-                    <td><a>Edit</a>|<a href="/delete/{{$departamento->id_departamento}}">Delete</a></td>
+                    <td><a href = "editDepartment/{{$departamento->id_departamento}}">Edit</a>|<a href="/deleteDepartament/{{$departamento->id_departamento}}">Delete</a></td>
                     </tr>
                 @endforeach
             @endif

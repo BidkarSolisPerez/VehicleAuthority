@@ -39,4 +39,8 @@ class PagesController extends Controller {
     public function addNewDepartment(){
         return view("Pages.addNewDepartment");
     }
+
+    public function editDepartment(){
+        return view("Pages.editDepartment");
+    }
 }

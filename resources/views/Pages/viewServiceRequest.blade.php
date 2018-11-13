@@ -53,12 +53,10 @@
 @section('content')
     <nav class="topnav">
             <div class="login-container">
-                <form action="{{ URL::to('/loginme') }}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    Username: <input type="text" placeholder="Username" name="username">
-                    Password: <input type="text" placeholder="Password" name="password">
-                    <button type="submit" name="loginButton">Login</button>
-                </form>
+                    <h3>{{ session('currentUser')}}</h3>
+                    <form action="{{ URL::to('/logoutme') }}" method="post">
+                        <button type="submit" name="loginButton">Log Out</button>
+                    </form>
             </div>
     </nav>
         
