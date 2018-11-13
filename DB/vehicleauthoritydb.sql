@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 09-11-2018 a las 02:54:25
+-- Tiempo de generación: 13-11-2018 a las 03:13:21
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.2.10
 
@@ -35,6 +35,15 @@ CREATE TABLE IF NOT EXISTS `categoria_vehiculo` (
   PRIMARY KEY (`codigo_categoria_vehiculo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `categoria_vehiculo`
+--
+
+INSERT INTO `categoria_vehiculo` (`codigo_categoria_vehiculo`, `descripcion_categoria`) VALUES
+(1, 'SUV'),
+(2, 'Familiar'),
+(3, 'Vechiculo');
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +60,15 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   PRIMARY KEY (`id_cliente`),
   KEY `id_direccion` (`id_direccion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `telefono`, `correo_electronico`, `id_direccion`, `otro_detalle`) VALUES
+(102340234, 88768690, 'cliente2@dominio.com', 102340234, 'Es un cliente premium'),
+(102340986, 88767243, 'cliente1@dominio.com', 102340986, 'Es un cliente premium'),
+(103450986, 88767243, 'cliente3@dominio.com', 103450986, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,6 +95,15 @@ CREATE TABLE IF NOT EXISTS `consulta_servicio` (
   KEY `id_prueba_adicional` (`id_prueba_adicional`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `consulta_servicio`
+--
+
+INSERT INTO `consulta_servicio` (`id_servicio_consulta`, `is_servicio_consulta_previo`, `id_cliente`, `id_vehiculo`, `id_servicio`, `fecha_servicio_solicitada`, `fecha_servicio_efectuado`, `costo_servicio`, `id_prueba_adicional`, `otro_detalle`) VALUES
+(1000, 999, 102340986, 23412, 1000, '2017-06-15', '2017-06-16', 750000, NULL, 'Vehiculo sin poblemas'),
+(1002, 1001, 102340234, 12344, 1000, '2017-06-15', '2017-06-16', 750000, NULL, 'Vehiculo sin poblemas'),
+(1004, 1003, 103450986, 23412, 1000, '2017-06-15', '2017-06-16', 750000, NULL, 'Vehiculo sin poblemas');
+
 -- --------------------------------------------------------
 
 --
@@ -86,11 +113,18 @@ CREATE TABLE IF NOT EXISTS `consulta_servicio` (
 DROP TABLE IF EXISTS `departamento`;
 CREATE TABLE IF NOT EXISTS `departamento` (
   `id_departamento` int(10) UNSIGNED NOT NULL,
-  `nombre_departamento` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre_departamento` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `descripcion_departamento` varchar(85) COLLATE utf8_unicode_ci DEFAULT NULL,
   `otros_detalles` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_departamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `departamento`
+--
+
+INSERT INTO `departamento` (`id_departamento`, `nombre_departamento`, `descripcion_departamento`, `otros_detalles`) VALUES
+(100, 'Pintura', 'Departamento de Pintura', 'Departamento de pintura 1');
 
 -- --------------------------------------------------------
 
@@ -108,6 +142,15 @@ CREATE TABLE IF NOT EXISTS `direccion_cliente` (
   PRIMARY KEY (`id_direccion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `direccion_cliente`
+--
+
+INSERT INTO `direccion_cliente` (`id_direccion`, `provincia`, `canton`, `distrito`, `direccion_exacta`) VALUES
+(102340234, 'Cartago', 'Oreamuno', 'Los Angeles', 'De la iglesia 100 metros este'),
+(102340986, 'San Jose', 'San Jose', 'Uruca', 'Del banco 100 metros este'),
+(103450986, 'Heredia', 'Heredia', 'Santa Lucia', 'De la libreria 100 metros este');
+
 -- --------------------------------------------------------
 
 --
@@ -121,6 +164,15 @@ CREATE TABLE IF NOT EXISTS `fabricante_vehiculo` (
   `otro_detalle` varchar(70) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`codigo_fabricante`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `fabricante_vehiculo`
+--
+
+INSERT INTO `fabricante_vehiculo` (`codigo_fabricante`, `nombre_fabricante`, `otro_detalle`) VALUES
+(1, 'Suzuki', 'Fabricante de Japon'),
+(2, 'Honda', 'Fabricante de Japon'),
+(3, 'Ford', 'Fabricante de Estados Unidos');
 
 -- --------------------------------------------------------
 
@@ -157,6 +209,15 @@ CREATE TABLE IF NOT EXISTS `modelo_vehiculo` (
   KEY `codigo_fabricante` (`codigo_fabricante`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `modelo_vehiculo`
+--
+
+INSERT INTO `modelo_vehiculo` (`codigo_modelo`, `nombre_modelo`, `codigo_fabricante`) VALUES
+(1, 'Vitara', 1),
+(2, 'CRX', 2),
+(3, 'Explorer', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -191,6 +252,13 @@ CREATE TABLE IF NOT EXISTS `servicio` (
   KEY `id_departamento` (`id_departamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`id_servicio`, `next_id_service`, `id_departamento`, `nombre_servicio`, `costo_servicio`, `descripcion_servicio`, `otros_detalles`) VALUES
+(1000, 1001, 100, 'Pintado de puertas', 750000, 'Servicio de pintura de puertas del vehiculo', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -210,6 +278,15 @@ CREATE TABLE IF NOT EXISTS `vehiculo` (
   KEY `codigo_fabricante` (`codigo_fabricante`),
   KEY `codigo_modelo` (`codigo_modelo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `vehiculo`
+--
+
+INSERT INTO `vehiculo` (`id_vehiculo`, `codigo_categoria`, `codigo_fabricante`, `codigo_modelo`, `año_registro`, `otro_detalle`) VALUES
+(12344, 2, 2, 2, 2017, 'Vehiculo en mal estado'),
+(23412, 1, 1, 1, 2016, 'Vehiculo en buen estado'),
+(23423, 3, 3, 3, 2015, 'Vehiculo en excelente estado');
 
 --
 -- Restricciones para tablas volcadas
