@@ -29,9 +29,9 @@ Route::get('/Department', "PagesController@viewDepartment");
 
 Route::get('/NewDepartment', "PagesController@addNewDepartment");
 
-Route::get('/deleteDepartment/{depID}',"SaveController@deleteDepartment");
+Route::get('/deleteDepartament/{depID}',"SaveController@deleteDepartment");
 
-Route::get('/editDepartment',"SaveController@editDepartment");
+//Route::get('/editDepartment',"SaveController@editDepartment");
 
 Route::get('/editDepartment/{id_department}',"SaveController@showDepartment");
 
