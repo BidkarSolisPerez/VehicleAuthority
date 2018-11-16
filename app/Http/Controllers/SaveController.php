@@ -53,5 +53,81 @@ class SaveController extends BaseController
         return view('Pages.editDepartment',['departamento'=>$departamento]);
      }
 
+    //Customer functions
+
+    public function addCustomer(Request $req){
+        $id_cliente = $req->input('id_cliente');
+        $correo_electronico = $req->input('correo_electronico');
+        $telefono = $req->input('telefono');
+        $provincia = $req->input('provincia');
+        $canton = $req->input('canton');
+        $distrito = $req->input('distrito');
+        $direccion_exacta = $req->input('direccion_exacta');
+        $otro_detalle = $req->input('otro_detalle');
+
+        $valuesCliente = array(
+            'id_cliente'     =>   $id_cliente,
+            'telefono'     =>   $telefono, 
+            'correo_electronico'     =>   $correo_electronico,
+            'id_direccion' => $id_cliente,
+            'otro_detalle' => $otro_detalle
+        );
+
+        $valuesDireccion =  array(
+            'id_direccion' => $id_cliente,
+            'provincia'     =>   $provincia,
+            'canton'     =>   $canton,
+            'distrito'     =>   $distrito,
+            'direccion_exacta'     =>   $direccion_exacta
+        );
+
+        DB::table('direccion_cliente')->insert($valuesDireccion);
+        DB::table('cliente')->insert($valuesCliente);
+        
+        return redirect('Customer');
+    }
+
+    public function showCustomer($id){
+        $customer = DB::table('cliente')->where('id_cliente',$id)->get();
+        $direccion = DB::table('direccion_cliente')->where('id_direccion',$id)->get();
+        return view('Pages.editCustomer',['cliente'=>$customer],['direccion'=>$direccion]);
+     }
+
+    public function editCustomer(Request $request,$id) {
+
+        $cliente = DB::table('cliente')->where('id_cliente',$id)->get();
+        $direccion = DB::table('direccion_cliente')->where('id_direccion',$id)->get();
+
+        $telefono = $request->input('telefono');
+        $correo_electronico = $request->input('correo_electronico');
+        $otro_detalle = $request->input('otro_detalle');
+
+        $provincia = $request->input('provincia');
+        $canton = $request->input('canton');
+        $distrito = $request->input('distrito');
+        $direccion_exacta = $request->input('direccion_exacta');
+
+        DB::update('update cliente 
+            set telefono = ?,
+            correo_electronico = ?,
+            otro_detalle = ? 
+            where id_cliente = ?',
+            [$telefono, $correo_electronico, $otro_detalle, $id]);
+
+        DB::update('update direccion_cliente 
+            set provincia = ?,
+            canton = ?,
+            distrito = ?,
+            direccion_exacta = ?
+            where id_direccion = ?',
+            [$provincia, $canton, $distrito, $direccion_exacta, $id]);
+
+        return redirect('Customer');
+     }
      
+     public function deleteCustomer($id){
+        DB::table('cliente')->where('id_cliente', $id)->delete();
+        DB::table('direccion_cliente')->where('id_direccion', $id)->delete();
+        return redirect('Customer');  
+    }
 }

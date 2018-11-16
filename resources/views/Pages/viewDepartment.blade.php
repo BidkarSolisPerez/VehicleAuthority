@@ -83,7 +83,7 @@
                         }@else
                             <td>{{ $departamento->otros_detalles }}</td>
                         @endif
-                    <td><a href = "editDepartment/{{$departamento->id_departamento}}">Edit</a>|<a href="/deleteDepartament/{{$departamento->id_departamento}}">Delete</a></td>
+                    <td><a href = "/editDepartment/{{$departamento->id_departamento}}">Edit</a>|<a href="/deleteDepartament/{{$departamento->id_departamento}}">Delete</a></td>
                     </tr>
                 @endforeach
             @endif

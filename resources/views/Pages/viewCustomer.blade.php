@@ -65,7 +65,7 @@
 
 <h1 class="mainheader">Vehicle System MyCarAutho</h1>
 
-<button>Agregar nuevo</button>
+<button type="button" onclick="window.location='{{ url('/NewCustomer') }}'">Nuevo Cliente</button>
 
 <table class="tableView">
         <tr>
@@ -76,6 +76,7 @@
             <th>Canton</th>
             <th>Distrito</th>
             <th>Direccion Exacta</th>
+            <th>Otros detalles</th>
             <th>Actualizacion</th>
             @if (count($customers) > 0)
                 @foreach ($customers as $customer)
@@ -87,7 +88,8 @@
                         <td>{{ $customer->canton }}</td>
                         <td>{{ $customer->distrito }}</td>
                         <td>{{ $customer->direccion_exacta }}</td>
-                        <td><a>Edit</a>|<a>Delete</a></td>
+                        <td>{{ $customer->otro_detalle }}</td>
+                        <td><a href = "/editCustomer/{{$customer->id_cliente}}">Edit</a>|<a href="/deleteCustomer/{{$customer->id_cliente}}">Delete</a></td>
                     </tr>
                 @endforeach
             @endif

@@ -17,13 +17,21 @@ Route::get('/', function () {
 });
 */
 
+// Lout out and log in
+
+Route::post('/loginme',"UserController@loginme");
+
+Route::post('/logoutme',"UserController@logoutme");
+
+//General routing controller
 Route::get('/', "PagesController@login");
 
 Route::get('/ServiceRequest', "PagesController@viewServiceRequest");
 
-Route::get('/Customer', "PagesController@viewCustomer");
-
 Route::get('/Service', "PagesController@viewService");
+
+//Routing related to Department
+//Route::get('/editDepartment',"SaveController@editDepartment");
 
 Route::get('/Department', "PagesController@viewDepartment");
 
@@ -31,18 +39,24 @@ Route::get('/NewDepartment', "PagesController@addNewDepartment");
 
 Route::get('/deleteDepartament/{depID}',"SaveController@deleteDepartment");
 
-//Route::get('/editDepartment',"SaveController@editDepartment");
-
 Route::get('/editDepartment/{id_department}',"SaveController@showDepartment");
 
 Route::post('/editDepartment/{id_department}',"SaveController@editDepartment");
 
-Route::post('/loginme',"UserController@loginme");
-
-Route::post('/logoutme',"UserController@logoutme");
-
 Route::post('/addDepartment',"SaveController@addDepartment");
 
+//Routing related to customers
 
+Route::get('/Customer', "PagesController@viewCustomer");
+
+Route::get('/NewCustomer', "PagesController@addNewCustomer");
+
+Route::get('/deleteCustomer/{depID}',"SaveController@deleteCustomer");
+
+Route::get('/editCustomer/{id_department}',"SaveController@showCustomer");
+
+Route::post('/editCustomer/{id_department}',"SaveController@editCustomer");
+
+Route::post('/addCustomer',"SaveController@addCustomer");
 
 
