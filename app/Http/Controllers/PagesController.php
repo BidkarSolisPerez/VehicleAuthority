@@ -55,4 +55,46 @@ class PagesController extends Controller {
     public function editCustomer(){
         return view("Pages.editCustomer");
     }
+
+    //Fabricante
+    public function viewFabricante(){
+        $fabricantes = DB::table('fabricante_vehiculo')->get();
+        return view("Pages.viewFabricante")->with('fabricantes',$fabricantes);
+    }
+
+    public function addNewFabricante(){
+        return view("Pages.addNewFabricante");
+    }
+
+    public function editFabricante(){
+        return view("Pages.editFabricante");
+    }
+
+    //Categoria
+    public function viewCategoria(){
+        $categorias = DB::table('categoria_vehiculo')->get();
+        return view("Pages.viewCategoria")->with('categorias',$categorias);
+    }
+
+    public function addNewCategoria(){
+        return view("Pages.addNewCategoria");
+    }
+
+    public function editCategoria(){
+        return view("Pages.editCategoria");
+    }
+
+    //Modelo
+    public function viewModelo(){
+        $modelos = DB::table('modelo_vehiculo')->get();
+        return view("Pages.viewModelo")->with('modelos',$modelos);
+    }
+
+    public function addNewModelo(){
+        return view("Pages.addNewModelo");
+    }
+
+    public function editModelo(){
+        return view("Pages.editModelo");
+    }
 }

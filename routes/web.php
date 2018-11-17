@@ -59,4 +59,44 @@ Route::post('/editCustomer/{id_department}',"SaveController@editCustomer");
 
 Route::post('/addCustomer',"SaveController@addCustomer");
 
+//Fabricante
 
+Route::get('/Fabricante', "PagesController@viewFabricante");
+
+Route::get('/NewFabricante', "PagesController@addNewFabricante");
+
+Route::get('/deleteFabricante/{codigo_fabricante}',"SaveController@deleteFabricante");
+
+Route::get('/editFabricante/{codigo_fabricante}',"SaveController@showFabricante");
+
+Route::post('/editFabricante/{codigo_fabricante}',"SaveController@editFabricante");
+
+Route::post('/addFabricante',"SaveController@addFabricante");
+
+//Categoria
+
+Route::get('/Categoria', "PagesController@viewCategoria");
+
+Route::get('/NewCategoria', "PagesController@addNewCategoria");
+
+Route::get('/deleteCategoria/{codigo_fabricante}',"SaveController@deleteCategoria");
+
+Route::get('/editCategoria/{codigo_fabricante}',"SaveController@showCategoria");
+
+Route::post('/editCategoria/{codigo_fabricante}',"SaveController@editCategoria");
+
+Route::post('/addCategoria',"SaveController@addCategoria");
+
+//Modelo
+
+Route::get('/Modelo', "PagesController@viewModelo");
+
+Route::get('/NewModelo', "PagesController@addNewModelo");
+
+Route::get('/deleteModelo/{codigo_modelo}',"SaveController@deleteModelo");
+
+Route::get('/editModelo/{codigo_modelo}',"SaveController@showModelo");
+
+Route::post('/editModelo/{codigo_modelo}',"SaveController@editModelo");
+
+Route::post('/addModelo',"SaveController@addModelo");

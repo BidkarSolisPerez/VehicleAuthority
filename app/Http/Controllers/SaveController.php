@@ -130,4 +130,111 @@ class SaveController extends BaseController
         DB::table('direccion_cliente')->where('id_direccion', $id)->delete();
         return redirect('Customer');  
     }
+
+    //Fabricante
+    public function addFabricante(Request $req){
+        $codigo_fabricante = $req->input('codigo_fabricante');
+        $nombre_fabricante = $req->input('nombre_fabricante');
+        $otro_detalle = $req->input('otro_detalle');        
+
+        $values = array(
+            'codigo_fabricante'     =>   $codigo_fabricante, 
+            'nombre_fabricante'   =>   $nombre_fabricante,
+            'otro_detalle' => $otro_detalle,            
+        );
+
+        DB::table('fabricante_vehiculo')->insert($values);
+        
+        return redirect('Fabricante');
+    }
+
+    public function deleteFabricante($id){
+        DB::table('fabricante_vehiculo')->where('codigo_fabricante', $id)->delete();
+        return redirect('Fabricante');  
+    }
+
+    public function editFabricante(Request $request,$id) {
+
+        $nombre_fabricante = $request->input('nombre_fabricante');
+        $otro_detalle = $request->input('otro_detalle');
+        DB::update('update fabricante_vehiculo set nombre_fabricante = ? where codigo_fabricante = ?',[$nombre_fabricante,$id]);
+        DB::update('update fabricante_vehiculo set otro_detalle = ? where codigo_fabricante = ?',[$otro_detalle,$id]);        
+        return redirect('Fabricante');
+     }
+
+     public function showFabricante($id){
+        $departamento = DB::table('fabricante_vehiculo')->where('codigo_fabricante',$id)->get();
+        return view('Pages.editFabricante',['fabricante'=>$departamento]);
+     }
+
+    //Categoria
+    public function addCategoria(Request $req){
+        $codigo_categoria_vehiculo = $req->input('codigo_categoria_vehiculo');
+        $descripcion_categoria = $req->input('descripcion_categoria');        
+
+        $values = array(
+            'codigo_categoria_vehiculo'     =>   $codigo_categoria_vehiculo, 
+            'descripcion_categoria'   =>   $descripcion_categoria            
+        );
+
+        DB::table('categoria_vehiculo')->insert($values);
+        
+        return redirect('Categoria');
+    }
+
+    public function deleteCategoria($id){
+        DB::table('categoria_vehiculo')->where('codigo_categoria_vehiculo', $id)->delete();
+        return redirect('Categoria');  
+    }
+
+    public function editCategoria(Request $request,$id) {
+
+        $descripcion_categoria = $request->input('descripcion_categoria');
+        
+        DB::update('update categoria_vehiculo set descripcion_categoria = ? where codigo_categoria_vehiculo = ?',[$descripcion_categoria,$id]);
+        
+        return redirect('Categoria');
+     }
+
+     public function showCategoria($id){
+        $categoria = DB::table('categoria_vehiculo')->where('codigo_categoria_vehiculo',$id)->get();
+        return view('Pages.editCategoria',['categoria'=>$categoria]);
+     }
+    //Modelo
+    public function addModelo(Request $req){
+        $codigo_modelo = $req->input('codigo_modelo');
+        $nombre_modelo = $req->input('nombre_modelo');
+        $codigo_fabricante = $req->input('codigo_fabricante');        
+
+        $values = array(
+            'codigo_modelo'     =>   $codigo_modelo, 
+            'nombre_modelo'   =>   $nombre_modelo,
+            'codigo_fabricante' => $codigo_fabricante            
+        );
+
+        DB::table('modelo_vehiculo')->insert($values);
+        
+        return redirect('Modelo');
+    }
+
+    public function deleteModelo($id){
+        DB::table('modelo_vehiculo')->where('codigo_modelo', $id)->delete();
+        return redirect('Modelo');  
+    }
+
+    public function editModelo(Request $request,$id) {
+
+        $nombre_modelo = $request->input('nombre_modelo');
+        $codigo_fabricante = $request->input('codigo_fabricante');
+        
+        DB::update('update modelo_vehiculo set nombre_modelo = ? where codigo_modelo = ?',[$nombre_modelo,$id]);
+        DB::update('update modelo_vehiculo set codigo_fabricante = ? where codigo_modelo = ?',[$codigo_fabricante,$id]);
+        
+        return redirect('Modelo');
+     }
+
+     public function showModelo($id){
+        $modelo = DB::table('modelo_vehiculo')->where('codigo_modelo',$id)->get();
+        return view('Pages.editModelo',['modelo'=>$modelo]);
+     }
 }
