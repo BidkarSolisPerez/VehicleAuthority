@@ -358,40 +358,52 @@ class SaveController extends BaseController
      }
      //Vehicle
     public function addVehicle(Request $req){
+        $id_vehiculo = $req->input('id_vehiculo');
+        $codigo_categoria = $req->input('codigo_categoria');
+        $codigo_fabricante = $req->input('codigo_fabricante');   
         $codigo_modelo = $req->input('codigo_modelo');
-        $nombre_modelo = $req->input('nombre_modelo');
-        $codigo_fabricante = $req->input('codigo_fabricante');        
+        $año_registro = $req->input('año_registro');
+        $otro_detalle = $req->input('otro_detalle');        
 
         $values = array(
+            'id_vehiculo'     =>   $id_vehiculo, 
+            'codigo_categoria'   =>   $codigo_categoria,
+            'codigo_fabricante' => $codigo_fabricante,
             'codigo_modelo'     =>   $codigo_modelo, 
-            'nombre_modelo'   =>   $nombre_modelo,
-            'codigo_fabricante' => $codigo_fabricante            
+            'año_registro'   =>   $año_registro,
+            'otro_detalle' => $otro_detalle               
         );
 
-        DB::table('modelo_vehiculo')->insert($values);
+        DB::table('vehiculo')->insert($values);
         
-        return redirect('Modelo');
+        return redirect('Vehicle');
     }
 
     public function deleteVehicle($id){
-        DB::table('modelo_vehiculo')->where('codigo_modelo', $id)->delete();
-        return redirect('Modelo');  
+        DB::table('vehiculo')->where('id_vehiculo', $id)->delete();
+        return redirect('Vehicle');  
     }
 
     public function editVehicle(Request $request,$id) {
 
-        $nombre_modelo = $request->input('nombre_modelo');
-        $codigo_fabricante = $request->input('codigo_fabricante');
+        $codigo_categoria = $request->input('codigo_categoria');
+        $codigo_fabricante = $request->input('codigo_fabricante');   
+        $codigo_modelo = $request->input('codigo_modelo');
+        $año_registro = $request->input('año_registro');
+        $otro_detalle = $request->input('otro_detalle');  
         
-        DB::update('update modelo_vehiculo set nombre_modelo = ? where codigo_modelo = ?',[$nombre_modelo,$id]);
-        DB::update('update modelo_vehiculo set codigo_fabricante = ? where codigo_modelo = ?',[$codigo_fabricante,$id]);
+        DB::update('update vehiculo set codigo_categoria = ? where id_vehiculo = ?',[$codigo_categoria,$id]);
+        DB::update('update vehiculo set codigo_fabricante = ? where id_vehiculo = ?',[$codigo_fabricante,$id]);
+        DB::update('update vehiculo set codigo_modelo = ? where id_vehiculo = ?',[$codigo_modelo,$id]);
+        DB::update('update vehiculo set año_registro = ? where id_vehiculo = ?',[$año_registro,$id]);
+        DB::update('update vehiculo set otro_detalle = ? where id_vehiculo = ?',[$otro_detalle,$id]);
         
-        return redirect('Modelo');
+        return redirect('Vehicle');
      }
 
      public function showVehicle($id){
-        $modelo = DB::table('modelo_vehiculo')->where('codigo_modelo',$id)->get();
-        return view('Pages.editModelo',['modelo'=>$modelo]);
+        $vehiculo = DB::table('vehiculo')->where('id_vehiculo',$id)->get();
+        return view('Pages.editVehicle',['vehiculo'=>$vehiculo]);
      }
      //Pruebas
     public function addPruebas(Request $req){

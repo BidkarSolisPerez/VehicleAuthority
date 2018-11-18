@@ -112,4 +112,18 @@ class PagesController extends Controller {
     public function editServiceRequest(){
         return view("Pages.editServiceRequest");
     }
+
+    //Vehicle
+    public function viewVehicle(){
+        $vehiculos = DB::table('vehiculo')->get();
+        return view("Pages.viewVehicle")->with('vehiculos',$vehiculos);        
+    }
+
+    public function addNewVehicle(){
+        return view("Pages.addNewVehicle");
+    }
+
+    public function editVehicle(){
+        return view("Pages.editVehicle0");
+    }
 }

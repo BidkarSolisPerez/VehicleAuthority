@@ -122,3 +122,19 @@ Route::get('/editServiceRequest/{id_servicio_consulta}',"SaveController@showServ
 Route::post('/editServiceRequest/{id_servicio_consulta}',"SaveController@editServiceRequest");
 
 Route::post('/addServiceRequest',"SaveController@addServiceRequest");
+
+//Vehicle
+Route::get('/Vehicle', "PagesController@viewVehicle");
+
+Route::get('/NewVehicle', "PagesController@addNewVehicle");
+
+Route::get('/deleteVehicle/{id_vehiculo}',"SaveController@deleteVehicle");
+
+Route::get('/editVehicle/{id_vehiculo}',"SaveController@showVehicle");
+
+Route::post('/editVehicle/{id_vehiculo}',"SaveController@editVehicle");
+
+Route::post('/addVehicle',"SaveController@addVehicle");
+
+//Pruebas
+ 
