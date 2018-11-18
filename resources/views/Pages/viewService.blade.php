@@ -65,7 +65,7 @@
 
 <h1 class="mainheader">Vehicle System MyCarAutho</h1>
 
-<button>Agregar nuevo</button>
+<button type="button" onclick="window.location='{{ url('/NewService') }}'">Nuevo Servicio</button>
 <table class="tableView">
         <tr>
                 <th>ID Servicio</th>
@@ -82,7 +82,7 @@
                             <td>{{ $service->nombre_servicio }}</td>
                             <td>{{ $service->costo_servicio }}</td>
                             <td>{{ $service->descripcion_servicio}}</td>
-                            <td><a>Edit</a>|<a>Delete</a></td>
+                            <td><a href = "/editService/{{$service->id_servicio}}">Edit</a>|<a href="/deleteService/{{$service->id_servicio}}">Delete</a></td>
                         </tr>
                     @endforeach
                 @endif

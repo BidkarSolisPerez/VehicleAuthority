@@ -63,7 +63,7 @@
     
     <h1 class="mainheader">Vehicle System MyCarAutho</h1>
     
-    <button>Agregar nuevo</button>
+    <button type="button" onclick="window.location='{{ url('/NewServiceRequest') }}'">Nuevo Requerimiento</button>
     <table class="tableView">
         <tr>
                 <th>ID Solicitud</th>
@@ -82,7 +82,7 @@
                             <td>{{ $request->id_servicio }}</td>
                             <td>{{ $request->fecha_servicio_efectuado}}</td>
                             <td>{{ $request->costo_servicio }}</td>
-                            <td><a>Edit</a>|<a>Delete</a></td>
+                            <td><a href = "/editServiceRequest/{{$request->id_servicio_consulta}}">Edit</a>|<a href="/deleteServiceRequest/{{$request->id_servicio_consulta}}">Delete</a></td>
                         </tr>
                     @endforeach
                 @endif

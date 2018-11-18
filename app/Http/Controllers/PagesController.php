@@ -11,19 +11,6 @@ class PagesController extends Controller {
         return view("Pages.login");
     }
 
-    public function viewServiceRequest(){
-        $serviceReq = DB::table('consulta_servicio')->get();
-        return view("Pages.viewServiceRequest")->with('requests',$serviceReq);
-    }
-
-
-
-    public function viewService(){
-        $services = DB::table('servicio')->get();
-        return view("Pages.viewService")->with('services',$services);
-        //echo $services;
-    }
-
     //Routing for department
     public function viewDepartment(){
         $departamentos = DB::table('departamento')->get();
@@ -96,5 +83,33 @@ class PagesController extends Controller {
 
     public function editModelo(){
         return view("Pages.editModelo");
+    }
+
+    //Service
+    public function viewService(){
+        $services = DB::table('servicio')->get();
+        return view("Pages.viewService")->with('services',$services);        
+    }
+
+    public function addNewService(){
+        return view("Pages.addNewService");
+    }
+
+    public function editService(){
+        return view("Pages.editService");
+    }
+
+    //Service Request
+    public function viewServiceRequest(){
+        $serviceReq = DB::table('consulta_servicio')->get();
+        return view("Pages.viewServiceRequest")->with('requests',$serviceReq);
+    }
+
+    public function addNewServiceRequest(){
+        return view("Pages.addNewServiceRequest");
+    }
+
+    public function editServiceRequest(){
+        return view("Pages.editServiceRequest");
     }
 }

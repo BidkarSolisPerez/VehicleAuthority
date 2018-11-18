@@ -26,10 +26,6 @@ Route::post('/logoutme',"UserController@logoutme");
 //General routing controller
 Route::get('/', "PagesController@login");
 
-Route::get('/ServiceRequest', "PagesController@viewServiceRequest");
-
-Route::get('/Service', "PagesController@viewService");
-
 //Routing related to Department
 //Route::get('/editDepartment',"SaveController@editDepartment");
 
@@ -100,3 +96,29 @@ Route::get('/editModelo/{codigo_modelo}',"SaveController@showModelo");
 Route::post('/editModelo/{codigo_modelo}',"SaveController@editModelo");
 
 Route::post('/addModelo',"SaveController@addModelo");
+
+//Service
+Route::get('/Service', "PagesController@viewService");
+
+Route::get('/NewService', "PagesController@addNewService");
+
+Route::get('/deleteService/{id_servicio}',"SaveController@deleteService");
+
+Route::get('/editService/{id_servicio}',"SaveController@showService");
+
+Route::post('/editService/{id_servicio}',"SaveController@editService");
+
+Route::post('/addService',"SaveController@addService");
+
+//Service Request
+Route::get('/ServiceRequest', "PagesController@viewServiceRequest");
+
+Route::get('/NewServiceRequest', "PagesController@addNewServiceRequest");
+
+Route::get('/deleteServiceRequest/{id_servicio_consulta}',"SaveController@deleteServiceRequest");
+
+Route::get('/editServiceRequest/{id_servicio_consulta}',"SaveController@showServiceRequest");
+
+Route::post('/editServiceRequest/{id_servicio_consulta}',"SaveController@editServiceRequest");
+
+Route::post('/addServiceRequest',"SaveController@addServiceRequest");
